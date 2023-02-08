@@ -1,0 +1,20 @@
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed':'' ">
+    <!--  -->
+    <!-- Using the `ngClass` directive to add the `logo-container` class and the `center` class to the
+    div. -->
+    <div [ngClass]="{ 'logo-container': true, 'center': collapsed }">
+        <button class="logo" (click)="openNav()">A</button>
+        <div class="logo-text" *ngIf="collapsed">Angular</div>
+        <button class="btn-close" *ngIf="collapsed" (click)="closeNav()">
+            <span class="material-icons">close</span>
+        </button>
+    </div>
+    <ul class="navList">
+        <li class="navList-item" *ngFor="let data of navData">
+            <a class="navList-link" [routerLink]="[data.routerLink]">
+                <i class="navList-icon"><span class="material-icons">{{data.icon}}</span></i>
+                <span class="navList-text" *ngIf="collapsed">{{data.label}}</span>
+            </a>
+        </li>
+    </ul>
+</div>
